@@ -17,7 +17,6 @@ namespace CompAndDel
             IPipe nullPipe = new PipeNull();
             IPipe pipeFilter2 = new PipeSerial(negativeFilter, nullPipe);
             IPipe pipeFilter1 = new PipeSerial(BWFilter, pipeFilter2);
-            //IPipe fork = new PipeFork(pipeFilter1, pipeFilter2 );
             IPicture filteredImage= pipeFilter1.Send(picture);
             provider.SavePicture(filteredImage, "..\\Program\\filteredImages\\filtered1.jpg");
             
@@ -42,7 +41,7 @@ namespace CompAndDel
             lastProvider2.SavePicture(filteredImage2, "..\\Program\\filteredImages\\filteredLuke.jpg");
 
             //Ejercicio 3
-            
+
             PictureProvider provider3 = new PictureProvider();
             IPicture picture3 = provider.GetPicture("..\\Program\\2en4dias.jpg");
             PipeNull nullPipe3 = new PipeNull();
