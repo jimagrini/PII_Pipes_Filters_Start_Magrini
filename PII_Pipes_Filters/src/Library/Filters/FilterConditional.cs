@@ -5,12 +5,12 @@ using CognitiveCoreUCU;
 namespace CompAndDel.Filters
 {
     /// <summary>
-    /// Un filtro que recibe una imagen y comprueba que la misma tenga una cara.
+    /// Un filtro que recibe una imagen y comprueba que la misma contenga rostro o no.
     /// </remarks>
     public class FilterConditional : IFilter
     {   
         /// <summary>
-        /// Atributo añadido para poder determinar que pipe seguir en el PipeConditionalFork
+        /// Atributo añadido para poder determinar a través de que pipe continuar en el PipeConditionalFork
         /// </summary>
         /// <value></value>
         public bool isFace {get; set;}
@@ -27,7 +27,7 @@ namespace CompAndDel.Filters
         }
 
         /// Un filtro que retorna una copia de la imagen recibida y comprueba si la imagen tiene
-        /// o no una cara mediante el directorio en la que esta se guardó previamente en un FilterSave.
+        /// o no una cara utilizando el directorio en path.
         /// </summary>
         /// <param name="image">La imagen a la cual se le va a aplicar el filtro.</param>
         /// <returns>La imagen recibida en un directorio indicado.</returns>
@@ -35,17 +35,17 @@ namespace CompAndDel.Filters
         {
             IPicture result = image.Clone();
 
-            CognitiveFace face= new CognitiveFace(true, Color.GreenYellow);
+            CognitiveFace face= new CognitiveFace(true, Color.Red);
             face.Recognize(Path);
             
             if (face.FaceFound)
             {
-                Console.WriteLine("Face Found!");
+                Console.WriteLine("Face detected!");
                 isFace = true;
             }
             else
             {
-                Console.WriteLine("No Face Found");
+                Console.WriteLine("No face detected");
                 isFace = false;
             }
             return result;

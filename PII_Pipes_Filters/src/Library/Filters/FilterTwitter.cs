@@ -22,7 +22,7 @@ namespace CompAndDel.Filters
             this.Path = path;
         }
 
-        /// Un filtro que retorna una copia de la imagen recibida y la guarda en un directorio.
+        /// Un filtro que retorna una copia de la imagen recibida y la publica en twitter
         /// </summary>
         /// <param name="image">La imagen a la cual se le va a aplicar el filtro.</param>
         /// <returns>La imagen recibida en un directorio indicado.</returns>
