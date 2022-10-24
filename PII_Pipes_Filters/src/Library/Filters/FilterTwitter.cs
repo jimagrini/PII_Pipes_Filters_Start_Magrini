@@ -11,6 +11,8 @@ namespace CompAndDel.Filters
     {   
         
         public string Path {get; set;}
+
+        public string Post {get; set;}
         /// <summary>
         ///Metodo para cambiar el directorio en el que se guarda la copia de la imagen
         /// </summary>
@@ -29,8 +31,8 @@ namespace CompAndDel.Filters
             IPicture result = image.Clone();
             
             var Twitter = new TwitterImage();
-            Twitter.PublishToTwitter("Esa mancha no se borra nunca más", Path);
-            Console.WriteLine(Twitter.PublishToTwitter("Esa mancha no se borra nunca más", Path));
+            Twitter.PublishToTwitter(Post, Path);
+            Console.WriteLine(Twitter.PublishToTwitter(Post, Path));
 
             return result;
         }

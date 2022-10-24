@@ -42,6 +42,7 @@ namespace CompAndDel
             lastProvider2.SavePicture(filteredImage2, "..\\Program\\filteredImages\\filteredLuke.jpg");
 
             //Ejercicio 3
+            
             PictureProvider provider3 = new PictureProvider();
             IPicture picture3 = provider.GetPicture("..\\Program\\2en4dias.jpg");
             PipeNull nullPipe3 = new PipeNull();
@@ -61,7 +62,9 @@ namespace CompAndDel
 
             saver2BW.PathChanger("..\\Program\\filteredImages\\2en4diasBW.jpg");
             saver2Negative.PathChanger("..\\Program\\filteredImages\\2en4diasNegative.jpg");
+            twitterBW.Post = "Esa mancha no se borra nunca más";
             twitterBW.PathChanger("..\\Program\\filteredImages\\2en4diasBW.jpg");
+            twitterNegative.Post = "Esa mancha no se borra nunca más";
             twitterNegative.PathChanger("..\\Program\\filteredImages\\2en4diasNegative.jpg");
             
             
@@ -69,8 +72,29 @@ namespace CompAndDel
             PictureProvider lastProvider3 = new PictureProvider();
             lastProvider3.SavePicture(filteredImage3, "..\\Program\\filteredImages\\filtered2en4dias.jpg");
 
+            //Ejercicio 4
 
+            PictureProvider provider4 = new PictureProvider();
+            IPicture picture4 = provider.GetPicture("..\\Program\\indio.jpg");
+            FilterTwitter twitterFilter = new FilterTwitter();
             
+            PipeNull nullPipe4= new PipeNull();
+            FilterConditional conditional = new FilterConditional();
+            PipeSerial twtPipe = new PipeSerial(twitterFilter, nullPipe4);
+            PipeSerial negative = new PipeSerial(new FilterNegative(), nullPipe4);
+            PipeConditionalFork conditionalPipe = new PipeConditionalFork(conditional, negative, twtPipe);
+            PipeSerial pipeGreyScaleCond = new PipeSerial(new FilterGreyscale(), conditionalPipe);
+            
+            twitterFilter.PathChanger("..\\Program\\indio.jpg");
+            conditional.PathChanger("..\\Program\\indio.jpg");
+            
+            IPicture filteredImage4 =pipeGreyScaleCond.Send(picture4);
+            PictureProvider lastProvider4 = new PictureProvider();
+            lastProvider4.SavePicture(filteredImage4, "..\\Program\\filteredImages\\filteredIndio.jpg");
+
+
+
+
 
 
 
