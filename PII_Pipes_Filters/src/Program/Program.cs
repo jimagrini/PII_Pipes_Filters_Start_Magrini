@@ -61,9 +61,9 @@ namespace CompAndDel
 
             saver2BW.PathChanger("..\\Program\\filteredImages\\2en4diasBW.jpg");
             saver2Negative.PathChanger("..\\Program\\filteredImages\\2en4diasNegative.jpg");
-            twitterBW.Post = "Esa mancha no se borra nunca más";
+            twitterBW.Post = "Casi llega...";
             twitterBW.PathChanger("..\\Program\\filteredImages\\2en4diasBW.jpg");
-            twitterNegative.Post = "Esa mancha no se borra nunca más";
+            twitterNegative.Post = "Casi llega";
             twitterNegative.PathChanger("..\\Program\\filteredImages\\2en4diasNegative.jpg");
             
             
